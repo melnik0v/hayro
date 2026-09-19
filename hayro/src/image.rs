@@ -8,7 +8,7 @@ use pic_scale::{
 };
 use std::sync::Arc;
 use vello_cpu::peniko::{Compose, Fill, ImageQuality, ImageSampler, Mix};
-use vello_cpu::{Image, ImageSource, Mask, Pixmap, peniko};
+use vello_cpu::{Image, ImageSource, Mask, PixelMetadata, Pixmap, peniko};
 
 // Previously, we used `CatmullRom`. The problem with that one is that it
 // can have negative weights. If we pass a premultiplied buffer to
@@ -446,11 +446,14 @@ impl Renderer<'_> {
             rgba_data = padded_image;
         }
 
-        let pixmap = Pixmap::from_parts_with_opacity(
-            bytemuck::cast_vec(rgba_data),
+        let pixmap = Pixmap::from_parts(
+            rgba_data,
             img_width as u16,
             img_height as u16,
-            may_have_transparency,
+            PixelMetadata {
+                may_have_transparency,
+                ..Default::default()
+            },
         );
 
         self.draw_pixmap(
