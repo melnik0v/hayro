@@ -55,7 +55,7 @@ pdf-writer = { git = "https://github.com/typst/pdf-writer", rev = "fdf090125f1e7
 xmlwriter = { version = "0.1" }
 base64 = { version = "0.22" }
 zune-jpeg = { version = "0.5", default-features = false }
-vello_cpu = { git = "https://github.com/linebender/vello", rev = "60618fc3ff3343aeabbceb25180be6c6319154e3", default-features = false, features = ["std", "png", "u8_pipeline"] }
+vello_cpu = { git = "https://github.com/linebender/vello", rev = "1ac9f0d1ddbdbc301fe25626302cba09b99d073a", default-features = false, features = ["std", "png", "u8_pipeline"] }
 pic-scale = { version = "0.7.9", default-features = false }
 fearless_simd = "0.6.0"
 brotli = { version = "8", default-features = false, features = ["std"] }
